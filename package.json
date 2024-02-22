@@ -1,14 +1,12 @@
 {
-  "name": "project-u-server",
+  "name": "json-server-vercel",
   "version": "1.0.0",
-  "description": "",
+  "description": "Deploy JSON Server to Vercel",
   "main": "api/server.js",
   "scripts": {
     "start": "node api/server.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "json-server": "^1.0.0-alpha.23"
+    "json-server": "^0.17.4"
   }
 }

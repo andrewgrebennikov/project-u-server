@@ -1,7 +1,4 @@
-# dependencies
-/node_modules
+# Dependency directories
+node_modules/
 
-# ide
 .idea
-
-.vercel
