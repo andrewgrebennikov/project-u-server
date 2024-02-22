@@ -1,46 +1,31 @@
-const fs = require('fs');
-const jsonServer = require('json-server');
-const path = require('path');
+// See https://github.com/typicode/json-server#module
+const jsonServer = require('json-server')
 
-const server = jsonServer.create();
+const server = jsonServer.create()
 
-const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
+// Uncomment to allow write operations
+// const fs = require('fs')
+// const path = require('path')
+// const filePath = path.join('db.json')
+// const data = fs.readFileSync(filePath, "utf-8");
+// const db = JSON.parse(data);
+// const router = jsonServer.router(db)
 
-server.use(jsonServer.defaults({}));
-server.use(jsonServer.bodyParser);
+// Comment out to allow write operations
+const router = jsonServer.router('db.json')
 
-// Эндпоинт для логина
-server.post('/login', (req, res) => {
-    try {
-        const { username, password } = req.body;
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
-        const { users = [] } = db;
+const middlewares = jsonServer.defaults()
 
-        const userFromBd = users.find((user) => user.username === username && user.password === password);
+server.use(middlewares)
+// Add this before server.use(router)
+server.use(jsonServer.rewriter({
+    '/api/*': '/$1',
+    '/blog/:resource/:id/show': '/:resource/:id'
+}))
+server.use(router)
+server.listen(3000, () => {
+    console.log('JSON Server is running')
+})
 
-        if (userFromBd) {
-            return res.json(userFromBd);
-        }
-
-        return res.status(403).json({ message: 'User not found' });
-    } catch (e) {
-        console.log(e);
-        return res.status(500).json({ message: e.message });
-    }
-});
-
-// проверяем, авторизован ли пользователь
-server.use((req, res, next) => {
-    if (!req.headers.authorization) {
-        return res.status(403).json({ message: 'AUTH ERROR' });
-    }
-
-    next();
-});
-
-server.use(router);
-
-// запуск сервера
-server.listen(8000, () => {
-    console.log('server is running on 8000 port');
-});
+// Export the Server API
+module.exports = server
