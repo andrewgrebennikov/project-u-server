@@ -37,6 +37,14 @@ server.post('/login', (req, res) => {
     }
 });
 
+server.use((req, res, next) => {
+    if (!req.headers.authorization) {
+        return res.status(403).json({ message: 'AUTH ERROR' });
+    }
+
+    next();
+});
+
 // Add this before server.use(router)
 server.use(jsonServer.rewriter({
     '/api/*': '/$1',
