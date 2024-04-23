@@ -1,14 +1,18 @@
 {
-  "posts": [
+  "article-ratings": [
     {
       "id": "1",
-      "title": "json-server",
-      "userId": "1"
+      "rate": 4,
+      "feedback": "Хорошая статья",
+      "userId": "1",
+      "articleId": "1"
     },
     {
       "id": "2",
-      "title": "json-server",
-      "userId": "2"
+      "rate": 1,
+      "feedback": "Плохая статья",
+      "userId": "1",
+      "articleId": "2"
     }
   ],
   "articles": [
@@ -943,22 +947,70 @@
       "userId": "1",
       "text": "123",
       "id": "J4WnknR"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "Комментарий",
+      "id": "dbjk2ch"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "123",
+      "id": "uG9nVOu"
+    },
+    {
+      "articleId": "6",
+      "userId": "1",
+      "text": "321",
+      "id": "MWGGN-7"
     }
   ],
-  "users": [
+  "notifications": [
     {
       "id": "1",
-      "username": "admin",
-      "password": "123",
-      "role": "ADMIN",
-      "avatar": "https://upload.wikimedia.org/wikipedia/ru/f/f6/Kirby_FL.png"
+      "title": "Уведомление 1",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
     },
     {
       "id": "2",
-      "username": "user",
-      "password": "123",
-      "role": "USER",
-      "avatar": "https://voronpitomnik.ru/assets/images/5f381798-79bb-4639-bdea-eb27f5a846d7.JPG"
+      "title": "Уведомление 2",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "3",
+      "title": "Уведомление 3",
+      "description": "Произошло какое-то событие",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "4",
+      "title": "Уведомление 4",
+      "description": "Произошло какое-то событие",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "title": "Уведомление 5",
+      "description": "Произошло какое-то событие",
+      "userId": "2"
+    }
+  ],
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": "2"
     }
   ],
   "profile": [
@@ -982,6 +1034,22 @@
       "country": "Россия",
       "city": "Ульяновск",
       "username": "Chechen",
+      "avatar": "https://voronpitomnik.ru/assets/images/5f381798-79bb-4639-bdea-eb27f5a846d7.JPG"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123",
+      "roles": ["ADMIN"],
+      "avatar": "https://upload.wikimedia.org/wikipedia/ru/f/f6/Kirby_FL.png"
+    },
+    {
+      "id": "2",
+      "username": "user",
+      "password": "123",
+      "roles": ["USER"],
       "avatar": "https://voronpitomnik.ru/assets/images/5f381798-79bb-4639-bdea-eb27f5a846d7.JPG"
     }
   ]
